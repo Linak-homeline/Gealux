@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Gealux recliner app</title>
+</head>
+<style>
+body {
+    background-image: url(img/background1.svg);
+    background-repeat: no-repeat;
+}
+
+#chairControls {
+    background-image: url(img/chairLogo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.control1 {
+      transform: rotate(-45deg);
+    }
+
+
+/* slider style */
+.slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 35%;
+      height: 30px;
+      background: rgba(255, 255, 255, 0);
+      outline: none;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+
+/*ball style*/
+.slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: solid 3px black;
+      cursor: pointer;
+      background-color: white;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .arrow{
+      opacity: 0;
+    }
+
+    .arrowLeft{
+      transform: scaleX(-1);
+    } 
+</style>
+
+<body>
+    <main>
+        <header id="topBar" class="flex justify-between mt-10 mx-3">
+            <img src="img/gealuxLogoSmall.svg" alt="Gealux Logo">
+
+            <div id="selectChair">
+                <button class="flex"><u>Living room</u> <img class="self-center" src="img/selectChairArrow.svg" alt="arrow down"></button>
+                <ul class="hidden">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </header> 
+
+        <section id="standupButton" class="flex justify-end mt-5 mr-10">
+            <button class="bg-white rounded-full h-20 w-20 grid place-content-center"><img src="img/standupButton.svg" alt="stand up logo"></button>
+        </section>
+
+        <div class="wrapper grid grid-cols-6 grid-rows-5 justify-center fixed bottom-20 top-2 w-full" >
+            <section class="col-start-1 col-end-7 row-start-1 row-end-6 justify-self-center self-center w-4/5" >
+                <img src="img/chairLogo.svg" alt="Chair logo">
+            </section>  
+
+                <div class="control1 animate__animated animate__fadeIn flex items-center justify-center row-start-3 row-span-1 col-start-1 col-span-4 -mb-14">
+
+                    <img class="arrowLeft arrow w-16" src="img/arrow.svg" alt="arrow">
+                    
+                        <input class="slider" id="ball" type="range" value="500" min="1" max="1000" 
+                        ontouchstart="newStyle()" onmousedown="newStyle()" 
+                        onmouseup="resetStyle(), resetValue()" ontouchend="resetStyle(), resetValue()">
+                    
+                    <img class="arrowRight arrow w-16" src="img/arrow.svg" alt="arrow">
+                    
+                    </div>
+        </div>
+
+        <section id="favoritPosition" class="fixed w-screen bottom-32">
+            <p class="text-center mb-3">Favorite positions</p>
+            <section id="favoritPositionBobles" class="flex place-content-evenly">
+                <div id="option1" class="rounded-full border border-black bg-black h-14 w-14 flex justify-center items-center"><img src="img/tvIcon.svg" alt="tv" class="h-6"></div>
+                <div id="option2" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
+                <div id="option3" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
+                <div id="option4" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
+
+            </section>
+    </main>
+
+    <nav class="fixed bottom-0">
+
+        <section id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3">
+            <img src="img/navbar/batteryIconSmall.svg" alt="battery icon">
+            <p class="text-white uppercase px-3">Battery status: 90%</p>
+            <img src="img/navbar/settingsIcon.svg" alt="settings icon">
+        </section>
+
+        <div id="nav-placeholder" class="pt-2 pb-3 bg-white">
+
+        </div>
+        
+<script>
+        //for control 1
+        function newStyle() {
+        let s = document.createElement("style");
+        document.head.appendChild(s);
+        ball.addEventListener("input", () => {
+        s.textContent = `#ball::-webkit-slider-thumb{border-color: white;)}`
+
+        document.querySelector('.arrowLeft').style.opacity = "1"
+        document.querySelector('.arrowRight').style.opacity = "1"
+        })
+        }
+
+        function resetStyle() {
+        let s = document.createElement("style");
+        document.head.appendChild(s);
+        s.textContent = `#ball::-webkit-slider-thumb{border-color: black;)}`
+
+        document.querySelector('.arrowLeft').style.opacity = "0"
+        document.querySelector('.arrowRight').style.opacity = "0"
+        }
+
+        $(function(){
+          $("#nav-placeholder").load("nav.html");
+        });
+
+        function resetValue() {
+            document.querySelector('#ball').value = "500"
+        }
+</script>
+
+
+      
+    </nav>
+
+    </section>
+
+</body>
+</html>
