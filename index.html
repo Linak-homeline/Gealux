@@ -147,7 +147,7 @@ li:last-child {
 
             <section ontouchstart="active()" onmousedown="active()" onmouseup="notActive()" ontouchend="notActive()" 
             id="standupButton" class="flex justify-end mr-10 mt-2 col-start-4 col-end-7 row-start-2 row-end-3">
-            <div id="ring" class="border-opacity-0 flex rounded-full border-4 border-white justify-center items-center w-28 h-28">
+            <div id="ring" class="border-opacity-0 flex rounded-full border-4 border-white justify-center items-center w-28 h-28 animate__animated">
                 <div class="bg-white rounded-full h-20 w-20 grid place-content-center"><img src="img/standupButton.svg" alt="stand up logo"></div>
             </div>
             </section>
@@ -172,7 +172,8 @@ li:last-child {
         <section id="favoritPosition" class="fixed w-screen bottom-32">
             <p class="text-center mb-3">Favorite positions</p>
             <section id="favoritPositionBobles" class="flex place-content-evenly">
-                <div id="option1" class="rounded-full border border-black bg-black h-14 w-14 flex justify-center items-center"><img src="img/tvIcon.svg" alt="tv" class="h-6"></div>
+                <div  ontouchstart="TVactive()" onmousedown="TVactive()" onmouseup="TVnotActive()" ontouchend="TVnotActive()"
+                 id="option1" class="rounded-full border border-black bg-black h-14 w-14 flex justify-center items-center animate__animated"><img src="img/tvIcon.svg" alt="tv" class="h-6"></div>
                 <div id="option2" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img class="opacity-60" src="img/navbar/+Icon.svg" alt="star" class="h-6"></div>
                 <div id="option3" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
                 <div id="option4" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
@@ -229,11 +230,17 @@ window.addEventListener('click', function(e){
 function active() {
     let standup = document.getElementById("ring")
     standup.classList.add("border-opacity-100")
+    standup.classList.add("animate__pulse")
+    standup.classList.add("animate__infinite")
+
 }
 
 function notActive() {
     let standup = document.getElementById("ring")
     standup.classList.remove("border-opacity-100")
+    standup.classList.remove("animate__pulse")
+    standup.classList.remove("animate__infinite")
+
 }
 
 
@@ -276,6 +283,21 @@ function resetValue() {
     function hideBatterySite() {
         let batterySite = document.getElementById("batterySite")
         batterySite.style.display = "none"
+}
+
+// Favorite TV position
+function TVactive() {
+    let standup = document.getElementById("option1")
+    standup.classList.add("animate__pulse")
+    standup.classList.add("animate__infinite")
+
+}
+
+function TVnotActive() {
+    let standup = document.getElementById("option1")
+    standup.classList.remove("animate__pulse")
+    standup.classList.remove("animate__infinite")
+
 }
 </script>
 
