@@ -20,6 +20,16 @@ body {
     background-image: url(img/background1.svg);
     background-repeat: no-repeat;
     background-size: cover;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* prevent dragable images */
+img {
+  pointer-events: none;
 }
 
 
@@ -194,6 +204,8 @@ li:last-child {
         </div>
         
 <script>
+//document.getElementsByTagName('img').setAttribute('draggable', false);
+
 // For chair select dropdown
     
 
