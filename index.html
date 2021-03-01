@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
+    <meta name="apple-mobile-web-app-title" content="Gealux recliner app">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Gealux recliner app</title>
 </head>
 <style>
@@ -14,6 +20,25 @@ body {
     background-image: url(img/background1.svg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+#batterySite {
+    background-color: #BAD2D2;
+}
+
+#batterySite_topbar {
+    background-color: #464646;
+}
+
+.active {
+    background-color: #BAD2D2;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+li:last-child {
+    color: #BAD2D2;
 }
 
 #chairControls {
@@ -72,26 +97,61 @@ body {
     } 
 </style>
 
-<body>
+<body oncontextmenu="return false;">
+    <section id="batterySite" class="hidden animate__animated animate__slideInUp z-20 h-screen w-screen fixed">
+        
+        <div onclick="hideBatterySite()" id="batterySite_topbar" class="flex px-4 py-3 justify-between">
+            <img src="img/batterysite/X.svg" alt="X symbol">
+            <h2 class="uppercase text-white text-center"><strong>Battery</strong></h2>
+            <div class="w-8"></div>
+        </div>
+
+
+        <div id="batterySite_status" class="grid place-content-center my-32">
+            <img src="img/batterysite/batteryIconBIG.svg" alt="battery icon">
+            <p class="text-center text-2xl pt-2">90 %</p>
+        </div>
+
+        <div id="batterySite_option" class="bg-black bg-opacity-10 flex items-center justify-between px-5 py-6">
+            <div id="text">
+                <p class="text-lg"><strong>Status notifications</strong></p>
+                <p class="text-xs">- Get notified when the battery is below 20% </p>
+            </div>    
+
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slide round"></span>
+              </label>
+              
+              
+        </div>
+
+    </section>
     <main>
         <header id="topBar" class="flex justify-between mt-10 mx-3">
             <img src="img/gealuxLogoSmall.svg" alt="Gealux Logo">
 
-            <div id="selectChair">
-                <button class="flex"><u>Living room</u> <img class="self-center" src="img/selectChairArrow.svg" alt="arrow down"></button>
-                <ul class="hidden">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+            <div id="selectChair" class="z-10">
+                <div onclick="showHideDrop()" class="flex justify-end"><u class="pr-3" id="changeP"><strong>Living room</strong></u> <img class="self-center" src="img/selectChairArrow.svg" alt="arrow down"></div>
+                <ul id="chairSelector" class="hidden border border-black w-52 fixed right-2 mt-2 bg-white">
+                    <li class="btn active px-2 py-3 border-b border-gray-400">Living room</li>
+                    <li class="btn px-2 py-3 border-b border-gray-400">Bedroom</li>
+                    <li class="flex justify-between px-2 py-3">Add new<img src="img/plus.svg" alt="plus"></li>
                 </ul>
             </div>
         </header> 
 
-        <section id="standupButton" class="flex justify-end mt-5 mr-10">
-            <button class="bg-white rounded-full h-20 w-20 grid place-content-center"><img src="img/standupButton.svg" alt="stand up logo"></button>
-        </section>
+       
 
         <div class="wrapper grid grid-cols-6 grid-rows-5 fixed bottom-20 top-2 w-full" >
+
+            <section ontouchstart="active()" onmousedown="active()" onmouseup="notActive()" ontouchend="notActive()" 
+            id="standupButton" class="flex justify-end mr-10 mt-2 col-start-4 col-end-7 row-start-2 row-end-3">
+            <div id="ring" class="border-opacity-0 flex rounded-full border-4 border-white justify-center items-center w-28 h-28">
+                <div class="bg-white rounded-full h-20 w-20 grid place-content-center"><img src="img/standupButton.svg" alt="stand up logo"></div>
+            </div>
+            </section>
+
             <section class="flex col-start-1 col-end-7 row-start-1 row-end-6 justify-self-center self-center justify-center w-4/5" >
                 <img src="img/chairLogo.svg" alt="Chair logo">
             </section>  
@@ -113,7 +173,7 @@ body {
             <p class="text-center mb-3">Favorite positions</p>
             <section id="favoritPositionBobles" class="flex place-content-evenly">
                 <div id="option1" class="rounded-full border border-black bg-black h-14 w-14 flex justify-center items-center"><img src="img/tvIcon.svg" alt="tv" class="h-6"></div>
-                <div id="option2" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
+                <div id="option2" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img class="opacity-60" src="img/navbar/+Icon.svg" alt="star" class="h-6"></div>
                 <div id="option3" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
                 <div id="option4" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
 
@@ -122,7 +182,7 @@ body {
 
     <nav class="fixed bottom-0">
 
-        <section id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3">
+        <section onclick="showBatterySite()" id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3">
             <img src="img/navbar/batteryIconSmall.svg" alt="battery icon">
             <p class="text-white uppercase px-3">Battery status: 90%</p>
             <img src="img/navbar/settingsIcon.svg" alt="settings icon">
@@ -133,34 +193,90 @@ body {
         </div>
         
 <script>
-        //for control 1
-        function newStyle() {
-        let s = document.createElement("style");
-        document.head.appendChild(s);
-        ball.addEventListener("input", () => {
-        s.textContent = `#ball::-webkit-slider-thumb{border-color: white;)}`
+// For chair select dropdown
+    
 
-        document.querySelector('.arrowLeft').style.opacity = "1"
-        document.querySelector('.arrowRight').style.opacity = "1"
-        })
-        }
+    function showHideDrop() {
+  var dropDown = document.getElementById("chairSelector")
+  if (dropDown.style.display == "block") {
+    dropDown.style.display = "none";
+    document.getElementById("changeP").innerHTML = "<strong>" + "Living room" + "</strong>"
+  } else {
+    dropDown.style.display = "block"
+    document.getElementById("changeP").innerHTML = "<strong>" + "Select a chair" + "</strong>"
+  }
+}
 
-        function resetStyle() {
-        let s = document.createElement("style");
-        document.head.appendChild(s);
-        s.textContent = `#ball::-webkit-slider-thumb{border-color: black;)}`
+var header = document.getElementById("chairSelector");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
 
-        document.querySelector('.arrowLeft').style.opacity = "0"
-        document.querySelector('.arrowRight').style.opacity = "0"
-        }
+window.addEventListener('click', function(e){
+    if (!document.getElementById('selectChair').contains(e.target) && (!document.getElementById('topBar').contains(e.target))){
+    document.getElementById('chairSelector').style.display = "none"
+    document.getElementById("changeP").innerHTML = "<strong>" + "Living room" + "</strong>"
+  } 
+})
 
-        $(function(){
-          $("#nav-placeholder").load("nav.html");
-        });
 
-        function resetValue() {
-            document.querySelector('#ball').value = "500"
-        }
+// Standup button
+function active() {
+    let standup = document.getElementById("ring")
+    standup.classList.add("border-opacity-100")
+}
+
+function notActive() {
+    let standup = document.getElementById("ring")
+    standup.classList.remove("border-opacity-100")
+}
+
+
+//for control 1
+function newStyle() {
+let s = document.createElement("style");
+document.head.appendChild(s);
+ball.addEventListener("input", () => {
+s.textContent = `#ball::-webkit-slider-thumb{border-color: #66ff48;)}`
+
+document.querySelector('.arrowLeft').style.opacity = "1"
+document.querySelector('.arrowRight').style.opacity = "1"
+})
+}
+
+function resetStyle() {
+    let s = document.createElement("style");
+    document.head.appendChild(s);
+    s.textContent = `#ball::-webkit-slider-thumb{border-color: black; background-color: white;)}`
+
+    document.querySelector('.arrowLeft').style.opacity = "0"
+    document.querySelector('.arrowRight').style.opacity = "0"
+    }
+
+$(function(){
+    $("#nav-placeholder").load("nav.html");
+    });
+
+function resetValue() {
+    document.querySelector('#ball').value = "500"
+    }
+
+
+//Battery site Show/Hide
+    function showBatterySite() {
+        let batterySite = document.getElementById("batterySite")
+        batterySite.style.display = "block"
+    }
+
+    function hideBatterySite() {
+        let batterySite = document.getElementById("batterySite")
+        batterySite.style.display = "none"
+}
 </script>
 
 
