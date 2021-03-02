@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
+    <meta name="apple-mobile-web-app-title" content="Gealux recliner app">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Gealux recliner app</title>
+</head>
+<style>
+body {
+    background-color: #F0B9B6;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /*for the blue marking when touching on toogles*/
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+}
+
+/* prevent dragable images */
+img {
+  pointer-events: none;
+}
+
+.bg {
+    background-color: #333333;
+}
+
+#batterySite_topbar {
+    background-color: #464646;
+}
+
+.active {
+    background-color: #BAD2D2;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+li:last-child {
+    color: #BAD2D2;
+}
+
+#chairControls {
+    background-image: url(img/chairLogo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.control1 {
+      transform: rotate(-45deg);
+    }
+
+
+/* slider style */
+.slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 35%;
+      height: 30px;
+      background: rgba(255, 255, 255, 0);
+      outline: none;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+
+/*ball style*/
+.slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: solid 3px black;
+      cursor: pointer;
+      background-color: white;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .arrow{
+      opacity: 0;
+    }
+
+    .arrowLeft{
+      transform: scaleX(-1);
+    } 
+    
+</style>
+
+<body oncontextmenu="return false;">
+
+    <main>
+        <header id="topBar" class="flex justify-center bg mb-4">
+       <h2 class="text-center text-white py-4 text-4xl font-semibold">Timer</h2>
+     
+        </header> 
+
+    <section>
+        <div id="HoursMinutesSeconds" class="flex justify-center justify-around px-4 -mb-2">
+        <p>H</p> <p>M</p> <p>S</p>
+        </div>
+
+        <div id="selectedTime" class="flex justify-center justify-around text-5xl px-10">
+            <div class="font-medium">00</div> <p>:</p> <div class="font-medium">00</div> <p>:</p> <div class="font-medium">00</div>
+        </div>
+
+    </section>
+    
+    <section id="timeAdder" class="grid grid-cols-3 gap-y-6 text-4xl pt-6" style="height: 50vh;">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button class="col-start-2">0</button>
+        <button class="flex justify-center "><img class="self-center" src="img/backspace.svg" alt="Backspace button"></button>
+
+        <a href="index.html" class="flex justify-center col-start-2"><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
+    </section>
+
+
+
+       
+
+    <nav class="fixed bottom-0">
+
+        <div id="nav-placeholder" class="pt-2 pb-3 bg-white">
+
+        </div>
+    </nav>
+    </main>
+
+<script>
+$(function(){
+    $("#nav-placeholder").load("nav.html");
+    });
+</script>
+
+
+      
+   
+
+</body>
+</html>
