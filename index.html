@@ -25,6 +25,8 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
+    /*for the blue marking when touching on toogles*/
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
 }
 
 /* prevent dragable images */
@@ -146,11 +148,32 @@ li:last-child {
                 <ul id="chairSelector" class="hidden border border-black w-52 fixed right-2 mt-2 bg-white">
                     <li class="btn active px-2 py-3 border-b border-gray-400">Living room</li>
                     <li class="btn px-2 py-3 border-b border-gray-400">Bedroom</li>
-                    <li class="flex justify-between px-2 py-3">Add new<img src="img/plus.svg" alt="plus"></li>
+                    <li class="flex justify-between px-2 py-3" onclick="showAddNewChair()">Add new<img src="img/plus.svg" alt="plus"></li>
                 </ul>
             </div>
         </header> 
 
+        <!--Hidden accept box for add new chair-->
+        <div id="addNewChair__darkenScreen" class="hidden bg-black bg-opacity-30 w-screen h-screen absolute top-0 z-10 flex justify-center grid content-center">
+            <div id="addNewChair" class="grid content-center bg-white rounded-xl h-36 w-80 animate__animated animate__fadeInDownBig animate__fast">
+                <p class="pb-5 text-center">Do you wish to add a new chair? </p>
+                <div id="addNewChair__buttons" class="flex justify-evenly">
+                    <p onclick="hideAddNewChair()" class="w-24 text-center py-1">CANCEL</p>
+                    <button onclick="hideAddNewChair()" style="background-color: #BAD2D2;" class="w-24 text-black font-semibold rounded-2xl py-1">YES</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Hidden accept box for add new favorite position-->
+        <div id="addNewFavorite__darkenScreen" class="hidden bg-black bg-opacity-30 w-screen h-screen absolute top-0 z-10 flex justify-center grid content-center">
+            <div id="addNewFavorite" class="grid content-center bg-white rounded-xl h-36 w-80 animate__animated animate__fadeInDownBig animate__fast">
+                <p class="pb-5 text-center">Do you wish to add the current position of your chair to new favorite position?</p>
+                <div id="addNewFavorite__buttons" class="flex justify-evenly">
+                    <p onclick="hideAddNewFavorite()" class="w-24 text-center py-1">CANCEL</p>
+                    <button onclick="hideAddNewFavorite()" style="background-color: #BAD2D2;" class="w-24 text-black font-semibold rounded-2xl py-1">YES</button>
+                </div>
+            </div>
+        </div>
        
 
         <div class="wrapper grid grid-cols-6 grid-rows-5 fixed bottom-20 top-2 w-full" >
@@ -184,7 +207,7 @@ li:last-child {
             <section id="favoritPositionBobles" class="flex place-content-evenly">
                 <div  ontouchstart="TVactive()" onmousedown="TVactive()" onmouseup="TVnotActive()" ontouchend="TVnotActive()"
                  id="option1" class="rounded-full border border-black bg-black h-14 w-14 flex justify-center items-center animate__animated"><img src="img/tvIcon.svg" alt="tv" class="h-6"></div>
-                <div id="option2" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img class="opacity-60" src="img/navbar/+Icon.svg" alt="star" class="h-6"></div>
+                <div id="option2" onclick="showAddNewFavorite()" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img class="opacity-60" src="img/navbar/+Icon.svg" alt="star" class="h-6"></div>
                 <div id="option3" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
                 <div id="option4" class="rounded-full border border-black h-14 w-14 flex justify-center items-center"><img src="img/starIcon.svg" alt="star" class="h-6"></div>
 
@@ -206,7 +229,7 @@ li:last-child {
 <script>
 //document.getElementsByTagName('img').setAttribute('draggable', false);
 
-// For chair select dropdown
+// Chair select dropdown
     
 
     function showHideDrop() {
@@ -236,6 +259,15 @@ window.addEventListener('click', function(e){
     document.getElementById("changeP").innerHTML = "<strong>" + "Living room" + "</strong>"
   } 
 })
+
+// Add new chair
+function showAddNewChair() {
+document.getElementById("addNewChair__darkenScreen").style.display = "grid"
+}
+
+function hideAddNewChair() {
+    document.getElementById("addNewChair__darkenScreen").style.display = "none"
+}
 
 
 // Standup button
@@ -310,6 +342,15 @@ function TVnotActive() {
     standup.classList.remove("animate__pulse")
     standup.classList.remove("animate__infinite")
 
+}
+
+// Add new Favorite position 
+function showAddNewFavorite() {
+    document.getElementById("addNewFavorite__darkenScreen").style.display = "grid"
+}
+
+function hideAddNewFavorite() {
+    document.getElementById("addNewFavorite__darkenScreen").style.display = "none"
 }
 </script>
 
