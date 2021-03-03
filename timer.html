@@ -38,75 +38,6 @@ img {
     background-color: #333333;
 }
 
-#batterySite_topbar {
-    background-color: #464646;
-}
-
-.active {
-    background-color: #BAD2D2;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-li:last-child {
-    color: #BAD2D2;
-}
-
-#chairControls {
-    background-image: url(img/chairLogo.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.control1 {
-      transform: rotate(-45deg);
-    }
-
-
-/* slider style */
-.slidecontainer {
-      width: 100%;
-    }
-    
-    .slider {
-      -webkit-appearance: none;
-      width: 35%;
-      height: 30px;
-      background: rgba(255, 255, 255, 0);
-      outline: none;
-      -webkit-transition: .2s;
-      transition: opacity .2s;
-    }
-    
-
-/*ball style*/
-.slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: solid 3px black;
-      cursor: pointer;
-      background-color: white;
-    }
-    
-    .slider::-moz-range-thumb {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    .arrow{
-      opacity: 0;
-    }
-
-    .arrowLeft{
-      transform: scaleX(-1);
-    } 
-    
 </style>
 
 <body oncontextmenu="return false;">
@@ -123,23 +54,23 @@ li:last-child {
         </div>
 
         <div id="selectedTime" class="flex justify-center justify-around text-5xl px-10">
-            <div class="font-medium">00</div> <p>:</p> <div class="font-medium">00</div> <p>:</p> <div class="font-medium">00</div>
+            <input type="text" placeholder="00" maxlength="2" class="w-20"> <p>:</p> <input type="number" placeholder="00" min="0" max="59" class="w-20"> <p>:</p> <input type="number" placeholder="00" class="w-20">
         </div>
 
     </section>
     
     <section id="timeAdder" class="grid grid-cols-3 gap-y-6 text-4xl pt-6" style="height: 50vh;">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="col-start-2">0</button>
-        <button class="flex justify-center "><img class="self-center" src="img/backspace.svg" alt="Backspace button"></button>
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button class="col-start-2" data-number>0</button>
+        <button class="flex justify-center " data-delete><img class="self-center" src="img/backspace.svg" alt="Backspace button"></button>
 
         <a href="index.html" class="flex justify-center col-start-2"><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
     </section>
@@ -157,6 +88,9 @@ li:last-child {
     </main>
 
 <script>
+
+
+
 $(function(){
     $("#nav-placeholder").load("nav.html");
     });
