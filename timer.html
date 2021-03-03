@@ -38,6 +38,28 @@ img {
     background-color: #333333;
 }
 
+/* input field style */
+
+.bg_pink {
+    background-color: #F0B9B6;
+}
+
+input {
+    outline: none;
+}
+
+input::placeholder {
+    color: black;
+}
+
+input:active {
+    border-color: black;
+}
+
+input:focus::placeholder {
+    color: white;
+}
+
 </style>
 
 <body oncontextmenu="return false;">
@@ -53,8 +75,8 @@ img {
         <p>H</p> <p>M</p> <p>S</p>
         </div>
 
-        <div id="selectedTime" class="flex justify-center justify-around text-5xl px-10">
-            <input type="text" placeholder="00" maxlength="2" class="w-20"> <p>:</p> <input type="number" placeholder="00" min="0" max="59" class="w-20"> <p>:</p> <input type="number" placeholder="00" class="w-20">
+        <div id="selectedTime" class="flex justify-center justify-around text-5xl px-10 mt-1">
+            <input type="numbers" placeholder="00" maxlength="2" class="w-20 bg_pink text-center"> <p>:</p> <input type="numbers" placeholder="00" maxlength="2" class="w-20 bg_pink text-center"> <p>:</p> <input type="numbers" placeholder="00" maxlength="2" class="w-20 bg_pink text-center">
         </div>
 
     </section>
@@ -72,7 +94,7 @@ img {
         <button class="col-start-2" data-number>0</button>
         <button class="flex justify-center " data-delete><img class="self-center" src="img/backspace.svg" alt="Backspace button"></button>
 
-        <a href="index.html" class="flex justify-center col-start-2"><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
+        <a href="index.html" class="flex justify-center col-start-2 "><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
     </section>
 
 
