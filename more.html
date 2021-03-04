@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
+    <meta name="apple-mobile-web-app-title" content="Gealux recliner app">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Gealux recliner app</title>
+</head>
+<style>
+body {
+    background-image: url(img/background1.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /*for the blue marking when touching on toogles*/
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+}
+
+/* prevent dragable images */
+img {
+  pointer-events: none;
+}
+
+
+#batterySite {
+    background-color: #BAD2D2;
+}
+
+#batterySite_topbar {
+    background-color: #464646;
+}
+
+.active {
+    background-color: #BAD2D2;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+li:last-child {
+    color: #BAD2D2;
+}
+
+#chairControls {
+    background-image: url(img/chairLogo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.control1 {
+      transform: rotate(-45deg);
+    }
+
+
+/* slider style */
+.slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 35%;
+      height: 30px;
+      background: rgba(255, 255, 255, 0);
+      outline: none;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+
+/*ball style*/
+.slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: solid 3px black;
+      cursor: pointer;
+      background-color: white;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .arrow{
+      opacity: 0;
+    }
+
+    .arrowLeft{
+      transform: scaleX(-1);
+    } 
+    
+</style>
+
+<body oncontextmenu="return false;">
+    <section id="batterySite" class="hidden animate__animated animate__slideInUp z-20 h-screen w-screen fixed">
+        
+        <div onclick="hideBatterySite()" id="batterySite_topbar" class="flex px-4 py-3 justify-between">
+            <img src="img/batterysite/X.svg" alt="X symbol">
+            <h2 class="uppercase text-white text-center"><strong>Battery</strong></h2>
+            <div class="w-8"></div>
+        </div>
+
+
+        <div id="batterySite_status" class="grid place-content-center my-32">
+            <img src="img/batterysite/batteryIconBIG.svg" alt="battery icon">
+            <p class="text-center text-2xl pt-2">90 %</p>
+        </div>
+
+        <div id="batterySite_option" class="bg-black bg-opacity-10 flex items-center justify-between px-5 py-6">
+            <div id="text">
+                <p class="text-lg"><strong>Status notifications</strong></p>
+                <p class="text-xs">- Get notified when the battery is below 20% </p>
+            </div>    
+
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slide round"></span>
+              </label>
+              
+              
+        </div>
+
+    </section>
+    <main>
+        
+    </main>
+
+    <nav class="fixed bottom-0">
+
+        <section onclick="showBatterySite()" id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3">
+            <img src="img/navbar/batteryIconSmall.svg" alt="battery icon">
+            <p class="text-white uppercase px-3">Battery status: 90%</p>
+            <img src="img/navbar/settingsIcon.svg" alt="settings icon">
+        </section>
+
+        <div id="nav-placeholder" class="pt-2 pb-3 bg-white">
+
+        </div>
+
+    </nav>
+        
+<script>
+
+</script>
+
+
+      
+    
+
+    </section>
+
+</body>
+</html>

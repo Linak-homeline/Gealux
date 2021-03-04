@@ -70,17 +70,20 @@ input:focus::placeholder {
      
         </header> 
 
-    <section>
-        <div id="HoursMinutesSeconds" class="flex justify-center justify-around px-4 -mb-2">
+    <section class="h-82 fixed w-screen bottom-2/4">
+        <div id="HoursMinutesSeconds" class="flex justify-center justify-around px-4 -mb-2 text-2xl">
         <p>H</p> <p>M</p> <p>S</p>
         </div>
 
-        <div id="selectedTime" class="flex justify-center justify-around text-5xl px-10 mt-1">
-            <input type="tel" placeholder="00" maxlength="2" class="w-20 bg_pink text-center"> <p>:</p> <input type="number" placeholder="00" maxlength="2" class="w-20 bg_pink text-center"> <p>:</p> <input type="number" placeholder="00" maxlength="2" class="w-20 bg_pink text-center">
+        <div id="selectedTime" class="flex justify-center justify-around text-7xl w- px-10 mt-1">
+            <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center"> <p>:</p> <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center"> <p>:</p> <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center">
         </div>
-
     </section>
-    
+<div class="flex justify-center">
+        <a href="index.html" class="flex justify-center col-start-2 fixed bottom-32"><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
+</div>
+
+    <!--
     <section id="timeAdder" class="grid grid-cols-3 gap-y-6 text-4xl pt-6" style="height: 50vh;">
         <button data-number>1</button>
         <button data-number>2</button>
@@ -93,10 +96,9 @@ input:focus::placeholder {
         <button data-number>9</button>
         <button class="col-start-2" data-number>0</button>
         <button class="flex justify-center " data-delete><img class="self-center" src="img/backspace.svg" alt="Backspace button"></button>
-
-        <a href="index.html" class="flex justify-center col-start-2 "><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
     </section>
-
+-->
+        
 
 
        
