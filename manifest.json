@@ -1,11 +1,12 @@
 {
-    "name": "Recliner App",
-    "short_name": "ReclinerApp",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "black",
     "theme_color": "gray",
-    "orientation": "portrait-primary",
+    "background_image": "url:('img/gealuxLogoBig.svg')",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "index.html",
+    "app_name": "Gealux recliner app",
+    "short_name": "GRA",
+    "description": "",
     "icons": [
         {
             "src": "/img/splashscreen/icon-72x72.png",
@@ -37,5 +38,6 @@
             "type": "image/png",
             "sizes": "192x192"
         }    
-    ]
+    ],
+    "splash_pages": null
 }
