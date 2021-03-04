@@ -17,7 +17,6 @@
 </head>
 <style>
 body {
-    background-image: url(img/background1.svg);
     background-repeat: no-repeat;
     background-size: cover;
     -khtml-user-select: none;
@@ -107,9 +106,14 @@ li:last-child {
     .arrowLeft{
       transform: scaleX(-1);
     } 
+
+    .buttom_custom {
+        bottom:4.3rem;
+    }
     
 </style>
 
+<div id="control" class="hidden">
 <body oncontextmenu="return false;">
     <section id="batterySite" class="hidden animate__animated animate__slideInUp z-20 h-screen w-screen fixed">
         
@@ -215,20 +219,180 @@ li:last-child {
             </section>
     </main>
 
-    <nav class="fixed bottom-0">
+    <nav>
 
-        <section onclick="showBatterySite()" id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3">
+        <section onclick="showBatterySite()" id="batteryBar" class="flex bg-black w-screen justify-center rounded-t-md pt-3 pb-3 fixed buttom_custom">
             <img src="img/navbar/batteryIconSmall.svg" alt="battery icon">
             <p class="text-white uppercase px-3">Battery status: 90%</p>
             <img src="img/navbar/settingsIcon.svg" alt="settings icon">
         </section>
+</div>
 
-        <div id="nav-placeholder" class="pt-2 pb-3 bg-white">
+<!--Navbar-->
+        <div id="nav-placeholder" class="pt-2 pb-3 bg-white fixed bottom-0">
+            <section id="mainNav" class="bg-white w-screen flex justify-evenly pt2 pb3">
 
+                <a id="controlTab" href="#" class="grid place-items-center self-center">
+                    <img src="img/navbar/controlIconBLACK.svg" alt="control icon">
+                    <p>Control</p> <img src="img/navbar/activeDash.svg" alt="-" class="hidden py-2 dash">
+                </a>
+            
+                <a id="timerTab" href="#" class="grid place-items-center self-center px-10">
+                    <img src="img/navbar/timerIcon.svg" alt="timer icon">
+                    <p>Timer</p> <img src="img/navbar/activeDash.svg" alt="-" class="hidden py-2 dash">
+                </a>
+            
+                <a id="moreTab" href="#" class="grid place-items-center self-center">
+                    <img src="img/navbar/moreIcon.svg" alt="more icon">
+                    <p>More</p> <img src="img/navbar/activeDash.svg" alt="-" class="hidden py-2 dash">
+                </a>
+            </section>
         </div>
+    </nav>
+
+
+
+<div id="timer" class="hidden">
+    <style>
+        body {
+            background-color: #F0B9B6;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -khtml-user-select: none;
+            -o-user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /*for the blue marking when touching on toogles*/
+            -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+        }
+        
+        /* prevent dragable images */
+        img {
+          pointer-events: none;
+        }
+        
+        .bg {
+            background-color: #333333;
+        }
+        
+        /* input field style */
+        
+        .bg_pink {
+            background-color: #F0B9B6;
+        }
+        
+        .time {
+            outline: none;
+        }
+        
+        .time::placeholder {
+            color: black;
+        }
+        
+        .time:active {
+            border-color: black;
+        }
+        
+        .time:focus::placeholder {
+            color: white;
+        }
+        
+        </style>
+            <body>
+                
+            
+            <main>
+                <header id="topBar" class="flex justify-center bg mb-4">
+                    <h2 class="text-center text-white py-4 text-4xl font-semibold">Timer</h2>
+             
+                </header> 
+        
+            <section class="h-82 fixed w-screen bottom-2/4">
+                <div id="HoursMinutesSeconds" class="flex justify-center justify-around px-4 -mb-2 text-2xl">
+                <p>H</p> <p>M</p> <p>S</p>
+                </div>
+        
+                <div id="selectedTime" class="flex justify-center justify-around text-7xl w- px-10 mt-1">
+                    <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center time"> <p>:</p> <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center time"> <p>:</p> <input type="tel" placeholder="00" maxlength="2" class="w-24 bg_pink text-center time">
+                </div>
+            </section>
+            <div class="flex justify-center">
+                <a href="index.html" class="flex justify-center col-start-2 fixed bottom-32"><img class="self-center h-16" src="img/playButton.svg" alt="Play button"></a>
+            </div>
+        
+            </body>
+</div>
+
+<div id="more" class="mb-20 hidden">
+
+    <style>
+    .bg {
+        background-color: #333333;
+    }
+
+    .bg_darkGreen {
+        background-color: rgba(0, 0, 0, 0.08);
+    }
+
+</style>
+    
+
+    
+
+        <header id="topBar" class="flex justify-center bg mb-4">
+            <h2 class="text-center text-white py-4 text-4xl font-semibold">More</h2>
+     
+        </header> 
+        
+        <div class="flex justify-center py-6"><img src="img/gealuxLogoSmall.svg" alt="Gealux logo"></div>
+        
+
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-t border-b border-gray-400 justify-between">
+            <p>My recliner</p>  <img src="img/more/activeDot.svg" alt="Green dot">
+        </section>
+
+
+        <h3 class="text-sm font-bold pt-10 p-3">Settings</h3>
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-t border-b border-gray-400 justify-between">
+            <p>Recliner name</p> <div class="flex"><p>My recliner</p> <img src="img/more/arrow.svg" alt="arrow"></div>
+        </section>
+
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between">
+            <p>Favorite positions</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between">
+            <p>Autodrive</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+        
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between mt-14">
+            <p>Language</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+
+        <h3 class="text-sm font-bold pt-10 p-3">Support</h3>
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-t border-b border-gray-400 justify-between">
+            <p>Troubleshooting</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+
+        <h3 class="text-sm font-bold pt-10 p-3">About</h3>
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between">
+            <p>Terms and condition</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between">
+            <p>Privacy Policy</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>
+
+        <section id="more__option1" class="w-screen flex p-4 bg_darkGreen border-b border-gray-400 justify-between">
+            <p>About</p> <img src="img/more/arrow.svg" alt="arrow">
+        </section>    
+
+        <p class="flex justify-center text-xs pt-5 pb-16">Version Prototype 1.0</p>
+</div>
+
         
 <script>
-//document.getElementsByTagName('img').setAttribute('draggable', false);
 
 // Chair select dropdown
     
@@ -310,10 +474,6 @@ function resetStyle() {
     document.querySelector('.arrowRight').style.opacity = "0"
     }
 
-$(function(){
-    $("#nav-placeholder").load("nav.html");
-    });
-
 function resetValue() {
     document.querySelector('#ball').value = "500"
     }
@@ -353,13 +513,107 @@ function showAddNewFavorite() {
 function hideAddNewFavorite() {
     document.getElementById("addNewFavorite__darkenScreen").style.display = "none"
 }
+
+//Nav change of active site
+let control = document.querySelector('#controlTab p')
+let controlImg = document.querySelector('#controlTab .dash')
+let controlSite = document.querySelector('#control')
+
+let timer = document.querySelector('#timerTab p')
+let timerImg = document.querySelector('#timerTab .dash')
+let timerSite = document.querySelector('#timer')
+
+let more = document.querySelector('#moreTab p')
+let moreImg = document.querySelector('#moreTab .dash')
+let moreSite = document.querySelector('#more')
+
+
+
+
+let body = document.querySelector("body")
+
+
+console.log(body)
+
+
+    function changeActiveNavControl() {
+        body.style.backgroundImage = "url(img/background1.svg)";
+        body.style.backgroundColor = "";
+
+        
+        control.style.display = "none";
+        controlImg.style.display = "block";
+        controlSite.style.display = "block";
+        
+        timer.style.display = "";
+        timerImg.style.display = "";
+        timerSite.style.display = ""
+        
+        more.style.display = "";
+        moreImg.style.display = "";
+        moreSite.style.display = "";
+
+    }
+
+window.onload = changeActiveNavControl
+
+document.getElementById('controlTab').addEventListener("click", function() {
+    changeActiveNavControl();
+}) 
+
+    function changeActiveNavTimer() {
+            body.style.backgroundImage = "";
+            body.style.backgroundColor = "";
+
+            control.style.display = "";
+            controlImg.style.display = "";
+            controlSite.style.display = "";
+
+            timer.style.display = "none";
+            timerImg.style.display = "block";
+            timerSite.style.display = "block";
+
+            more.style.display = "";
+            moreImg.style.display = "";
+            moreSite.style.display = "";
+            
+        }
+
+document.getElementById('timerTab').addEventListener("click", function() {
+    changeActiveNavTimer();
+}) 
+
+function changeActiveNavMore() {
+            body.style.backgroundImage = "";
+            body.style.backgroundColor = "#BAD2D2";
+
+
+            control.style.display = "";
+            controlImg.style.display = "";
+            controlSite.style.display = "";
+
+            timer.style.display = "";
+            timerImg.style.display = "";
+            timerSite.style.display = "";
+
+            more.style.display = "none";
+            moreImg.style.display = "block";
+            moreSite.style.display = "block";
+        }
+
+document.getElementById('moreTab').addEventListener("click", function() {
+    changeActiveNavMore();
+}) 
+
+
+
+
+/*
+    $(function(){
+    $("#nav-placeholder").load("nav.html");
+    });
+*/
+
 </script>
-
-
-      
-    </nav>
-
-    </section>
-
 </body>
 </html>
